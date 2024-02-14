@@ -29,16 +29,15 @@ view_all_students() {
 #deleting the student record by ID
 delete_student_record() { 
     read -p "Enter your Student ID" delete_ID
-    sed -i "/^$delete_id,/d" "$Student_record"
-    sed -i "/^$update_ID,/d" "$Student_record"
-    echo "Student with ID $delete_id has been deleted."
+    sed -i "/^$id,/d" "$Student_record"
+    echo "Student with ID $id has been deleted."
 }
 
 #Updating student record by ID
 
 updating_student_record() { 
     read -p "Enter your Student ID" update_ID
-    sed -i "/^$update_ID,/d" "Student_record"
+    sed -i "/^$id,/d" "Student_record"
     create_student_record
 }
 
