@@ -9,16 +9,16 @@ read -p "Student name:" student_name
 read -p "Student age:" student_age
 read -p "Student email:" student_email
 
-echo "$student_ID,$student_name,$student_age,$student_email" >> Student_record
+echo "$student_ID,$student_name,$student_age,$student_email" >> "$Student_record"
 echo "Student has been successfully registered" }
 }
 #Viewing all student details
 view_all_students() { 
-    if [ -s "Student_record" ]; 
+    if [ -s $Student_record ]; 
         then  
             echo "Student ID | Name | Age| Email"
             echo "                              "
-            cat "$Student_record" | while IFS=, read -r id name age email; do
+            cat "students-list_1023.txt" | while IFS=, read -r id name age email; do
             echo "$id | $name | $age | $email"
         done 
     else
