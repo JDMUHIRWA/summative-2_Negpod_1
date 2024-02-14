@@ -11,30 +11,34 @@ read -p "Student email:" student_email
 
 echo "$student_ID,$student_name,$student_age,$student_email" >> Student_record
 echo "Student has been successfully registered" }
-
+}
 #Viewing all student details
-view_all_students() { if [ -s "Student_record", then ] 
-echo "Student ID | Name | Age| Email"
-echo "                              "
-cat "$Student_record" | while IFS=, read -r id name age email; do
-echo "$id | $name | $age | $email"
-done 
-else
-echo "No student registered"
-fi
+view_all_students() { 
+    if [ -s "Student_record" ]; 
+        then  
+            echo "Student ID | Name | Age| Email"
+            echo "                              "
+            cat "$Student_record" | while IFS=, read -r id name age email; do
+            echo "$id | $name | $age | $email"
+        done 
+    else
+    echo "No student registered"
+    fi
 }
 
 #deleting the student record by ID
-delete_student_record() { read -p "Enter your Student ID" delete_ID
-sed -i "/^$delete_id,/d" "$Student_record"
-echo "Student with ID $delete_id has been deleted."
+delete_student_record() { 
+    read -p "Enter your Student ID" delete_ID
+    sed -i "/^$delete_id,/d" "$Student_record"
+    echo "Student with ID $delete_id has been deleted."
 }
 
 #Updating student record by ID
 
-updating_student_record() { read -p "Enter your Student ID" update_ID
-sed -i "/^$update_ID,/d" "Student_record"
-create_student_record
+updating_student_record() { 
+    read -p "Enter your Student ID" update_ID
+    sed -i "/^$update_ID,/d" "Student_record"
+    create_student_record
 }
 
 #Home
