@@ -13,7 +13,7 @@ local_dir="negpod_1-q1"
 rsync -avz --progress -e "sshpass -p $password ssh -o StrictHostKeyChecking=no" "$local_dir" "$username@$host:$remote_dir"
 
 # checking if backup was successful
-if sshpass -p "$password" ssh -o StrictHostKeyChecking=no "$username@host" "[-d \"$remote_dir/$local_dir\"]"; then
+if sshpass -p "$password" ssh -o StrictHostKeyChecking=no "$username@$host" "[ -d \"$remote_dir/$local_dir\" ]"; then
 	echo "Backup completed successfully"
 else
 	echo "Error occurred when backing up"
