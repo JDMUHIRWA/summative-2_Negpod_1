@@ -3,7 +3,10 @@
 Student_record=students-list_1023.txt
 output_file="student-emails.txt"
 
-#select just student emails
-awk -F '{print $4}' "$students_file" > "$output_file"
-
-echo "Emails selected and saved in $output_file."
+# declare function to select just student emails
+select_emails(){
+	grep -oP '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b' $Student_record > $output_file
+	echo "Emails selected and saved in $output_file."
+}
+# call the function for selecting emails
+select_emails
